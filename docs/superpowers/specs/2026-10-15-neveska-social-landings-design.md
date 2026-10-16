@@ -1,7 +1,7 @@
 # Neveska Social Landing Pages
 
 Create three complete, standalone mobile-first social landing pages for Neveska Martinez, using her supplied photos and preferred black color.
-The project currently contains only the `Imagenes/` directory; no application framework or Git repository is present.
+The project is published as a static site from the Git repository `github.com/Phyton06/Neveska` to GitHub Pages at `https://phyton06.github.io/Neveska/`; no application framework or build step is present.
 
 ## Approved design
 
@@ -24,7 +24,7 @@ Selecting OnlyFans opens an accessible confirmation dialog before navigation. Th
 
 ## Social sharing (Open Graph)
 
-Each retained page exposes Open Graph and Twitter Card metadata so shared links render a complete preview on every network. The confirmed deployment base is `https://phyton06.github.io/Neveska/` (repository `github.com/Phyton06/Neveska`), because Facebook and WhatsApp require absolute URLs. Every page declares `og:type`, `og:site_name`, `og:locale`, `og:title` (mirroring the page title), `og:description` listing all five networks, its own absolute `og:url`, and the shared absolute `og:image` pointing to a purpose-made 1200×630 JPEG, with `og:image:type`, `og:image:width`, `og:image:height`, and `og:image:alt`. The same values are mirrored in `twitter:card` (`summary_large_image`), `twitter:title`, `twitter:description`, `twitter:image`, and `twitter:image:alt`. The preview image `Imagenes/og-neveska.jpg` is cropped from the beach photo so the card stays legible at thumbnail size.
+Each retained page exposes its own Open Graph and Twitter Card metadata so shared links render a complete, page-specific preview on every network. The deployment base is `https://phyton06.github.io/Neveska/` (repository `github.com/Phyton06/Neveska`), because Facebook and WhatsApp require absolute URLs. Every page declares `og:type`, `og:site_name`, `og:locale`, its own `og:title` (mirroring the page title), its own `og:description` (mirroring the page's meta description), its own absolute `og:url`, and its own absolute `og:image` pointing to a page-specific 1200×630 JPEG cropped from that page's signature photo: `og-noir-electrico.jpg` (blue portrait), `og-galeria-portada.jpg` (beach), and `og-galeria-rollo.jpg` (swing), each with `og:image:type`, `og:image:width`, `og:image:height`, and `og:image:alt`. The same values are mirrored in `twitter:card` (`summary_large_image`), `twitter:title`, `twitter:description`, `twitter:image`, and `twitter:image:alt`.
 
 ## Acceptance checks
 
@@ -36,8 +36,8 @@ Each retained page exposes Open Graph and Twitter Card metadata so shared links 
 6. OnlyFans never navigates before explicit confirmation; confirmation opens its general homepage, while exit dismisses the dialog.
 7. Mobile, tablet, and desktop layouts use available space without horizontal overflow or empty gallery cells, and the roll gallery keeps equal photo frames with the OnlyFans frame centered beneath the two filled columns; keyboard and reduced-motion preferences remain supported.
 8. Every retained page ends with the credit `Desarrollado por Phyton`, where `Phyton` links to `https://phyton06.github.io/Portfolio/`.
-9. Every retained page carries Open Graph and Twitter Card metadata with absolute URLs based on `https://phyton06.github.io/Neveska/`, each page's own `og:url`, and the shared 1200×630 JPEG preview `Imagenes/og-neveska.jpg`.
+9. Every retained page carries its own Open Graph and Twitter Card metadata with absolute URLs based on `https://phyton06.github.io/Neveska/`, its own `og:url`, title, description, and a page-specific 1200×630 JPEG preview (`Imagenes/og-noir-electrico.jpg`, `og-galeria-portada.jpg`, `og-galeria-rollo.jpg`). The three pages and their preview images serve HTTP 200 from that base.
 
 ## Scope boundaries
 
-Do not invent personal social handles or claim verified age. The implementation is limited to refining the three retained standalone pages and removing the specifically rejected mosaic page; no framework, backend, analytics, or deployment setup is included.
+Do not invent personal social handles or claim verified age. The implementation is limited to the three retained standalone pages; no framework, backend, or analytics is included. Publication is the static GitHub Pages site of the repository `github.com/Phyton06/Neveska`.

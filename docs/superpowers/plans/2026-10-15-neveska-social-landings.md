@@ -120,3 +120,31 @@ Insert the Open Graph and Twitter Card block after each page's title, mirroring 
 - [x] **Step 4: Re-run checks**
 
 Observed: `python3 /tmp/opencode/test_neveska_refinement.py` passed (5 tests). A local `http.server` crawl returned the image as `200` `image/jpeg` (48,534 bytes) and all `og:*`/`twitter:*` tags on the served pages; real crawler previews require the deployed site.
+
+## Task 4: Per-page Open Graph previews and GitHub Pages publication
+
+**Files:**
+- Modify: `noir-electrico.html`, `galeria-portada.html`, `galeria-rollo.html` (social-card metadata)
+- Create: `Imagenes/og-noir-electrico.jpg`, `Imagenes/og-galeria-rollo.jpg`; rename `og-neveska.jpg` to `Imagenes/og-galeria-portada.jpg`
+- Create: `.gitignore`, `.nojekyll`
+- Test: temporary `unittest` script outside the repository; live checks against the deployed site.
+
+- [x] **Step 1: Require a page-specific preview image in the acceptance test**
+
+Rework the social-card test to map each page to its own image (`og-noir-electrico.jpg`, `og-galeria-portada.jpg`, `og-galeria-rollo.jpg`) and require each file as a 1200×630 JPEG. Observed: 4 failures before the change.
+
+- [x] **Step 2: Generate the page-specific preview images**
+
+Crop the electric page's blue portrait at ~26% height and the roll gallery's swing photo at ~30% height, upscale with Lanczos, save as 1200×630 JPEGs (observed: 69,405 and 62,594 bytes; compositions visually verified), and rename the beach crop to `og-galeria-portada.jpg`.
+
+- [x] **Step 3: Point each page at its own title, description, and image**
+
+Per page, `og:description`/`twitter:description` now mirror that page's own meta description; `og:image`, `twitter:image`, and the alt texts are page-specific. Observed: `python3 /tmp/opencode/test_neveska_refinement.py` passed (5 tests).
+
+- [x] **Step 4: Publish to `github.com/Phyton06/Neveska` and enable Pages**
+
+Commit the site (excluding tool-state directories via `.gitignore`, with `.nojekyll`), push `main`, and create the Pages site via the API (`source: main / root`). Observed: push `3f17801`; Pages created with `html_url: https://phyton06.github.io/Neveska/`, `https_enforced: true`.
+
+- [x] **Step 5: Verify the live site**
+
+Observed: all three pages return HTTP 200; all three preview images return HTTP/2 200 `image/jpeg`, and the deployed `og-noir-electrico.jpg` byte-hash matches the local file (sha256 `71825092…`). The repository root returns 404 because there is no `index.html`; the three pages are shared by direct link.
